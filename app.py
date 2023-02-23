@@ -69,7 +69,11 @@ def pokemon_growth():
                             })
     session.close()
     # Return dictionary as a JSON file for JS processing
-    return(jsonify(growth_rate))
+    response = jsonify(growth_rate)
+
+    #this is needed to call it from the html.
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return(response)
 
 
 @app.route("/a",methods=[])
